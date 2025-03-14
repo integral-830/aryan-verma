@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/**{*/
+/*  cursor: none;*/
+/*}*/
+
+@theme {
+    --animate-shine: shine 5s linear infinite;
+    @keyframes shine {
+        0% { background-position: 100% }
+        100% { background-position: -100% }
+    }
+}
+
+body {
+    font-family: 'Google Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    width: 100dvw;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/*@layer base {*/
+/*    @font-face {*/
+/*        font-family: 'Khepri';*/
+/*        src: url('/public/Khepri-Textured.woff2');*/
+/*    }*/
+/*}*/
