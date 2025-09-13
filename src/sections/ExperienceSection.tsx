@@ -36,7 +36,7 @@ const ExperienceSection = () => {
         }
     ];
 
-    const headingRef = useRef<HTMLHeadingElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null!);
 
     useEffect(() => {
         const cleanup = splitEnterScroll([headingRef]);

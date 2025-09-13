@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import ImageTrail from "../components/ImageTrail.tsx";
 import {useEffect, useRef} from "react";
 import {splitEnterScroll} from "../components/splitEnter.tsx";
 import TextSection from "./TextSection.tsx";
@@ -9,9 +8,9 @@ import ImageReveal from "../components/ImageReveal.tsx";
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
-    const headingRef = useRef<HTMLHeadingElement>(null);
-    const aboutContainer1 = useRef<HTMLDivElement>(null);
-    const aboutContainer2 = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null!);
+    const aboutContainer1 = useRef<HTMLDivElement>(null!);
+    const aboutContainer2 = useRef<HTMLDivElement>(null!);
 
     useEffect(() => {
         const cleanup = splitEnterScroll([headingRef]);
@@ -20,20 +19,6 @@ const AboutSection = () => {
 
     return (
         <section id="about" className="relative w-screen min-h-lvh">
-            <ImageTrail
-                items={[
-                    "https://picsum.photos/id/287/300/300",
-                    "https://picsum.photos/id/1001/300/300",
-                    "https://picsum.photos/id/1025/300/300",
-                    "https://picsum.photos/id/1026/300/300",
-                    "https://picsum.photos/id/1027/300/300",
-                    "https://picsum.photos/id/1028/300/300",
-                    "https://picsum.photos/id/1029/300/300",
-                    "https://picsum.photos/id/1030/300/300",
-                ]}
-                variant={2}
-            />
-
             <div className="relative w-full h-full flex flex-col justify-center items-center lg:px-20">
                 <div ref={headingRef} className="relative">
                     <h1 className="relative overflow-hidden text-[5rem] md:text-[8rem] xl:text-[12rem] text-black font-sofia_bold">

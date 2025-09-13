@@ -5,8 +5,8 @@ import {splitEnterScroll} from "../components/splitEnter.tsx";
 const WorkSection = () => {
 
     const [width, setWidth] = useState(0);
-    const carouselRef = useRef<HTMLDivElement>(null);
-    const headingRef2 = useRef<HTMLDivElement>(null)
+    const carouselRef = useRef<HTMLDivElement>(null!);
+    const headingRef2 = useRef<HTMLDivElement>(null!);
 
     const items: string[] = [
         "https://pub-8f7860ad7a6c4483942d3fd56b2ace7f.r2.dev/ov1.mp4",

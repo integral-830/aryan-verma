@@ -4,9 +4,9 @@ import gsap from "gsap";
 import {SplitText} from "gsap/SplitText";
 
 const ContactSection = () => {
-    const headingRef = useRef<HTMLHeadingElement>(null);
-    const nameRef = useRef<HTMLHeadingElement>(null);
-    const headingRef2 = useRef<HTMLHeadingElement>(null);
+    const headingRef = useRef<HTMLHeadingElement>(null!);
+    const nameRef = useRef<HTMLHeadingElement>(null!);
+    const headingRef2 = useRef<HTMLHeadingElement>(null!);
 
     useEffect(() => {
         gsap.registerPlugin(SplitText);
