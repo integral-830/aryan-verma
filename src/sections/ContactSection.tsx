@@ -33,7 +33,11 @@ const ContactSection = () => {
                 });
             });
         };
-        initSplitText(); // Run immediately
+        if ("fonts" in document && "ready" in (document as any).fonts) {
+            (document as any).fonts.ready.then(initSplitText);
+        } else {
+            setTimeout(initSplitText, 300);
+        }
         const cleanup = splitEnterScroll([headingRef, headingRef2]);
         const cleanup2 = splitEnterScrollReverse([nameRef]);
         return () => {

@@ -2,17 +2,17 @@
 
 @font-face {
     font-family: SplineRegular;
-    src: url("public/fonts/SplineSansMono-Regular.woff2");
+    src: url("/fonts/SplineSansMono-Regular.woff2");
 }
 
 @font-face {
     font-family: SofiaSemiBold;
-    src: url("public/fonts/SofiaSansCondensed-SemiBold.woff2");
+    src: url("/fonts/SofiaSansCondensed-SemiBold.woff2");
 }
 
 @font-face {
     font-family: SofiaBold;
-    src: url("public/fonts/SofiaSansCondensed-Bold.woff2");
+    src: url("/fonts/SofiaSansCondensed-Bold.woff2");
 }
 
 @utility liga {
