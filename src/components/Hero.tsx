@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText} from "gsap/SplitText";
-import pp2 from "../assets/pp2.jpg"
+import pp2 from "../../public/pp2.jpg"
 
 const Hero = () => {
     const [assetsLoaded, setAssetsLoaded] = useState(false);
@@ -103,7 +103,7 @@ const Hero = () => {
             </div>
             <div
                 className="preloader-mask fixed top-0 left-0 w-screen bg-black h-lvh pointer-events-none
-        [-webkit-mask:linear-gradient(to_right,black,black),url('src/assets/capsule.svg')_center/50%_no-repeat]
+        [-webkit-mask:linear-gradient(to_right,black,black),url('/capsule.svg')_center/50%_no-repeat]
         will-change-transform z-[1000]
         [mask-composite:subtract] [-webkit-mask-composite:destination-out]"
             ></div>

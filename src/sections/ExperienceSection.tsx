@@ -1,8 +1,8 @@
 import {Timeline} from "../components/Timeline.tsx";
 import {useEffect, useRef} from "react";
 import {splitEnterScroll} from "../components/splitEnter.tsx";
-import youtube from "../assets/youtube.svg"
-import freelance from "../assets/freelance.png"
+import youtube from "../../public/youtube.svg"
+import freelance from "../../public/freelance.png"
 
 const ExperienceSection = () => {
 

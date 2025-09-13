@@ -4,8 +4,8 @@ import {useEffect, useRef} from "react";
 import {splitEnterScroll} from "../components/splitEnter.tsx";
 import TextSection from "./TextSection.tsx";
 import ImageReveal from "../components/ImageReveal.tsx";
-import pp3 from "../assets/pp3.jpg"
-import pp from "../assets/pp.jpg"
+import pp3 from "../../public/pp3.jpg"
+import pp from "../../public/pp.jpg"
 
 gsap.registerPlugin(ScrollTrigger);
 
