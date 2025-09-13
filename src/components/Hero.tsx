@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText} from "gsap/SplitText";
+import pp2 from "../assets/pp2.jpg"
 
 const Hero = () => {
     const [assetsLoaded, setAssetsLoaded] = useState(false);
@@ -127,7 +128,7 @@ const Hero = () => {
                             <h4 className="htext text-black font-sofia_semibold leading-relaxed">/beyond-the-frame</h4>
                         </div>
                         <div className="relative overflow-hidden flex items-end w-full h-full">
-                            <img src="/src/assets/pp2.jpg" className="h-[180px] md:h-[300px] aspect-[3/4] bg-cover bgimg"
+                            <img src={pp2} className="h-[180px] md:h-[300px] aspect-[3/4] bg-cover bgimg"
                                  alt="profile_picture"/>
                         </div>
                     </div>

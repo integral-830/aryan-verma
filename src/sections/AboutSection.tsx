@@ -4,6 +4,8 @@ import {useEffect, useRef} from "react";
 import {splitEnterScroll} from "../components/splitEnter.tsx";
 import TextSection from "./TextSection.tsx";
 import ImageReveal from "../components/ImageReveal.tsx";
+import pp3 from "../assets/pp3.jpg"
+import pp from "../assets/pp.jpg"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +38,7 @@ const AboutSection = () => {
                         >
                             <div className="h-full flex flex-col justify-center items-start p-8">
                                 <ImageReveal
-                                    src="/src/assets/pp.jpg"
+                                    src={pp}
                                     alt="Poster"
                                     className="w-[200px] aspect-square m-4 object-cover"
                                     scrollRef={aboutContainer1}
@@ -70,7 +72,7 @@ const AboutSection = () => {
                             </div>
                             <div className="h-full flex flex-col justify-center items-start p-8">
                                 <ImageReveal
-                                    src="/src/assets/pp3.jpg"
+                                    src={pp3}
                                     alt="Poster"
                                     className="w-[200px] aspect-square object-cover m-4"
                                     scrollRef={aboutContainer2}
