@@ -15,6 +15,7 @@
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
     "framer-motion": "^12.4.10",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
     "lenis": "^1.2.3",
     "lucide-react": "^0.479.0",
