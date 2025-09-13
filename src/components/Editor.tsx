@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import {MdArrowDropDown, MdOutlineGrid3X3} from "react-icons/md";
 import {TfiLocationArrow} from "react-icons/tfi";
-import {GrCaretNext, GrCaretPrevious} from "react-icons/gr";
 import {TbPlayerTrackNext, TbPlayerTrackPrev} from "react-icons/tb";
 import {CiPlay1} from "react-icons/ci";
 import gsap from "gsap";
@@ -109,15 +108,15 @@ const Editor = () => {
     const timelineRef = useRef<HTMLDivElement>(null);
     const musicRef = useRef<HTMLDivElement>(null);
     const layersRef = useRef<HTMLDivElement>(null);
-    const stickyHeight = window.innerHeight * 5;
+    const stickyHeight = window.innerHeight * 3;
     const canvasRef = useRef<HTMLCanvasElement>(document.createElement("canvas"));
     const loadingRef = useRef<HTMLSpanElement>(document.createElement("span"));
     const [, setImages] = useState<HTMLImageElement[]>([]);
-    const frameCount: number = 147;
+    const frameCount: number = 297;
     const airpods = useRef<{ frame: number }>({frame: 0});
 
     const currentFrame = (index: number): string =>
-        `https://pub-c94b02dd33c14b448990be89eff7f07f.r2.dev/frames/${
+        `https://pub-8f7860ad7a6c4483942d3fd56b2ace7f.r2.dev/frames/frame${
             (index + 1).toString()
         }.webp`;
 
@@ -183,21 +182,22 @@ const Editor = () => {
 
     useGSAP(() => {
 
-        gsap.set(editorRef.current, {x: 0, y: "-100lvh", scale: 0.30, rotation: -6});
+        gsap.set(editorRef.current, {x: 0, y: "-25lvh", scale: 0.40, rotation: 0, opacity:0.9});
 
         gsap.to(editorRef.current, {
             scale: 1,
             rotation: 0,
             x: 0,
             y: 0,
+            opacity: 1,
             duration: 2,
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top bottom",
-                end: "top center",
+                end: "top center-=200px",
                 scrub: true,
             },
-            ease: "power",
+            ease: "linear",
         });
 
         ScrollTrigger.create({
@@ -228,76 +228,76 @@ const Editor = () => {
     return (
         <div
             id="container"
-            ref={containerRef} className="isolate mb-20 relative h-lvh w-full flex p-4 pointer-events-none"
+            ref={containerRef} className="isolate mb-20 relative h-lvh w-full flex px-16 pt-[85px] pointer-events-none"
         >
             <div ref={editorRef}
-                 className="isolate relative flex flex-col gap-2 w-full h-full border-2 border-white overflow-hidden bg-white/10 rounded-3xl py-2 scale-[33%] -rotate-12">
-                <div className="w-full h-[50px] items-center flex justify-between text-white px-10">
+                 className="isolate relative flex flex-col gap-2 w-full h-full border-2 border-black overflow-hidden bg-black/10 rounded-md py-2 scale-[33%] -rotate-12">
+                <div className="w-full h-[50px] items-center flex justify-between text-black px-10">
                     <div className="flex gap-4">
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <PlusIcon className="h-5 w-5 cursor-pointer"/>
                             Add Assets
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Layers className="h-5 w-5 cursor-pointer"/>
                             Layers
                         </div>
                     </div>
                     <div className="flex gap-4">
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <TfiLocationArrow className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <MdOutlineGrid3X3 className="h-5 w-5 cursor-pointer -rotate-90"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <SquareDashed className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Type className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <PenTool className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Crop className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                     </div>
                     <div className="flex gap-4">
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Box className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <CodeXml className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                     </div>
 
                 </div>
-                <div className="bg-white/50 rounded-full w-full h-[2px]"/>
+                <div className="bg-black/50 rounded-full w-full h-[2px]"/>
                 <div className="isolate relative w-full h-full flex items-center justify-center">
                     <div ref={canvasContainerRef}
-                         className="w-1/2 h-full isolate overflow-hidden relative rounded-3xl border-2 border-white/50">
+                         className="h-full aspect-[16/9] isolate overflow-hidden relative rounded-md border-2 border-black/50">
                         <div className="w-full h-full relative overflow-hidden">
                             <div className="loading-container w-full h-full flex items-center justify-center">
-                                <span ref={loadingRef} className=" loading-value text-[10vh] text-white">
+                                <span ref={loadingRef} className=" loading-value text-[10vh] text-black">
                                   0%
                                 </span>
                             </div>
@@ -305,74 +305,66 @@ const Editor = () => {
                         </div>
                     </div>
                     <div
-                        className="absolute right-0 top-0 flex flex-col h-full w-[5px] items-center justify-center rounded-full bg-white/20 gap-2 py-8 px-4 overflow-hidden">
+                        className="absolute right-0 top-0 flex flex-col h-full w-[5px] items-center justify-center rounded-md bg-black/20 gap-2 py-8 px-4 overflow-hidden">
                         {timeLine.map((scale) => (
                             <div key={scale} className="flex flex-col items-center gap-2">
-                                <h1 className="text-white text-[8px]">{scale}</h1>
-                                <div className="bg-white/50 w-full h-[2px] rounded-full"/>
-                                <div className="bg-white/50 w-full h-[2px] rounded-full"/>
-                                <div className="bg-white/50 w-full h-[2px] rounded-full"/>
-                                <div className="bg-white/50 w-full h-[2px] rounded-full"/>
+                                <h1 className="text-black text-[8px]">{scale}</h1>
+                                <div className="bg-black/50 w-full h-[2px] rounded-full"/>
+                                <div className="bg-black/50 w-full h-[2px] rounded-full"/>
+                                <div className="bg-black/50 w-full h-[2px] rounded-full"/>
+                                <div className="bg-black/50 w-full h-[2px] rounded-full"/>
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="w-full h-[50px] items-center flex justify-between text-white px-10">
+                <div className="w-full h-[50px] relative items-center flex justify-between text-black px-10">
                     <div className="flex gap-4">
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Undo2 className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Redo2 className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Trash2 className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                     </div>
                     <div className="flex gap-4">
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <TbPlayerTrackPrev className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
-                            <GrCaretPrevious className="h-5 w-5 cursor-pointer"/>
-                        </div>
-                        <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <CiPlay1 className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
-                            <GrCaretNext className="h-5 w-5 cursor-pointer"/>
-                        </div>
-                        <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <TbPlayerTrackNext className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Repeat1 className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                     </div>
                     <div className="flex gap-4">
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <RadioTower className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Maximize className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
                         <div
-                            className="flex h-fit items-center justify-center rounded-full bg-white/20 gap-2 py-2 px-4">
+                            className="flex h-fit items-center justify-center rounded-full gap-2 py-2 px-4">
                             <Info className="h-5 w-5 cursor-pointer"/>
                             <MdArrowDropDown className="h-5 w-5 cursor-pointer"/>
                         </div>
@@ -381,39 +373,39 @@ const Editor = () => {
                 </div>
                 <div className="isolate relative flex-col w-full h-fit flex items-center gap-2 px-8">
                     <div
-                        className="absolute top-0 left-0 bg-gradient-to-tr from-transparent via-transparent to-green-500/80 h-full w-1/2 z-50 rounded-sm"></div>
+                        className="absolute top-0 left-0 bg-gradient-to-tr from-transparent via-transparent to-black/80 h-full w-1/2 z-50 rounded-sm"></div>
 
                     <div
                         className="relative flex h-[10px] w-full px-10 items-center gap-2 py-4 ">
                         <div
                             ref={timelineRef}
-                            className="absolute left-0 flex h-[10px] w-[200vw] px-10 justify-center bg-white/20 gap-2 py-4 rounded-full overflow-hidden">
+                            className="absolute left-0 flex h-[10px] w-[200vw] px-10 justify-center bg-black/20 gap-2 py-4 rounded-full overflow-hidden">
                             {timeLine.map((scale, index) => (
                                 <div key={index} className="flex items-center gap-2">
-                                    <h1 className="text-white text-[8px]">{scale}</h1>
-                                    <div className="bg-white/50 h-[2px] w-[2px] rounded-full"/>
-                                    <div className="bg-white/50 h-[2px] w-[2px] rounded-full"/>
-                                    <div className="bg-white/50 h-[2px] w-[2px] rounded-full"/>
-                                    <div className="bg-white/50 h-[2px] w-[2px] rounded-full"/>
+                                    <h1 className="text-black text-[8px]">{scale}</h1>
+                                    <div className="bg-black/50 h-[2px] w-[2px] rounded-full"/>
+                                    <div className="bg-black/50 h-[2px] w-[2px] rounded-full"/>
+                                    <div className="bg-black/50 h-[2px] w-[2px] rounded-full"/>
+                                    <div className="bg-black/50 h-[2px] w-[2px] rounded-full"/>
                                 </div>
                             ))}
                         </div>
                     </div>
                     <div className="isolate relative flex h-[100px] w-full items-center py-2 ">
                         <div ref={frameRef}
-                             className="absolute left-0 flex h-fit w-[400vw] items-center justify-between py-2 px-20 will-change-transform overflow-hidden">
+                             className="absolute left-0 flex h-fit w-[400vw] items-center justify-between gap-2 py-2 px-20 will-change-transform overflow-hidden">
                             {Array(20).fill("").map((_, index) => {
                                 return (
                                     <div key={index}
-                                         className="isolate relative flex h-[70px] w-[300px] items-center px-2 py-1 gap-2 rounded-xl bg-[#efff8f] mix-blend-difference">
+                                         className="isolate relative flex h-[70px] w-[250px] items-center px-1 py-1 gap-1 rounded-md bg-black/20 mix-blend-difference">
                                         <div className="w-[4px] h-[20px] rounded-full bg-black"/>
                                         <div key={index}
-                                             className="relative flex h-full w-full text-[14px] items-center rounded-xl overflow-hidden ">
-                                            <img src={`https://pub-c94b02dd33c14b448990be89eff7f07f.r2.dev/frames/${
+                                             className="relative flex h-full w-full text-[14px] items-center rounded-sm overflow-hidden ">
+                                            <img src={`https://pub-8f7860ad7a6c4483942d3fd56b2ace7f.r2.dev/frames/frame${
                                                 (index + 1).toString()
                                             }.webp`} className="w-full h-full bg-cover" alt={"img"}/>
-                                            <img src={`https://pub-c94b02dd33c14b448990be89eff7f07f.r2.dev/frames/${
-                                                (index + 5).toString()
+                                            <img src={`https://pub-8f7860ad7a6c4483942d3fd56b2ace7f.r2.dev/frames/frame${
+                                                (index * 15).toString()
                                             }.webp`} className="w-full h-full bg-cover" alt={"img"}/>
                                         </div>
                                         <div className="w-[4px] h-[20px] rounded-full bg-black"/>
@@ -425,24 +417,24 @@ const Editor = () => {
                     <div className="flex relative h-fit w-full items-center px-10 gap-2 py-4 ">
                         <div
                             ref={musicRef}
-                            className="absolute left-0 flex h-[10px] w-[150vw] items-center px-10 bg-blue-300/20 gap-2 py-4 rounded-full overflow-hidden">
+                            className="absolute left-0 flex h-[10px] w-[150vw] items-center px-10 bg-black/20 gap-2 py-4 rounded-full overflow-hidden">
                             {Array(30).fill("").map((_, index) => {
                                 return (
                                     <div key={index} className="flex items-center gap-1">
-                                        <div className={`bg-white/50 h-[4px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[8px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[10px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[6px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[2px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[4px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[6px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[4px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[8px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[10px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[6px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[2px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[4px] w-[2px] rounded-full`}/>
-                                        <div className={`bg-white/50 h-[6px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[4px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[8px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[10px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[6px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[2px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[4px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[6px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[4px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[8px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[10px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[6px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[2px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[4px] w-[2px] rounded-full`}/>
+                                        <div className={`bg-black/50 h-[6px] w-[2px] rounded-full`}/>
                                     </div>
                                 )
                             })}
@@ -455,9 +447,9 @@ const Editor = () => {
                             {filters.map((text, index) => {
                                 return (
                                     <div key={index}
-                                         className="relative flex gap-2 h-fit w-fit text-[14px] items-center justify-center px-4 py-1 rounded-full bg-gradient-to-l from-teal-950 to-teal-400">
+                                         className="relative flex gap-2 h-fit w-fit text-[14px] items-center justify-center px-4 py-1 rounded-sm bg-gradient-to-l from-white to-black/20">
                                         <Blend className="h-5 w-5 cursor-pointer"/>
-                                        <h1 className="inline-block text-white text-[8px]">{text}</h1>
+                                        <h1 className="inline-block text-black text-[8px]">{text}</h1>
                                     </div>)
                             })}
                         </div>

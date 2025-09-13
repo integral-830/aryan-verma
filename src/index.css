@@ -1,10 +1,52 @@
 @import "tailwindcss";
 
+@font-face {
+    font-family: SplineRegular;
+    src: url("public/fonts/SplineSansMono-Regular.woff2");
+}
+
+@font-face {
+    font-family: SofiaSemiBold;
+    src: url("public/fonts/SofiaSansCondensed-SemiBold.woff2");
+}
+
+@font-face {
+    font-family: SofiaBold;
+    src: url("public/fonts/SofiaSansCondensed-Bold.woff2");
+}
+
+@utility liga {
+    font-feature-settings: "liga" on, "calt" on;
+}
+
+@utility ccmp {
+    font-feature-settings: "ccmp" on;
+}
+
+@utility ss01 {
+    font-feature-settings: "ss01" on;
+}
+
+@utility ss02 {
+    font-feature-settings: "ss02" on;
+}
+
+
+* {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 /**{*/
 /*  cursor: none;*/
 /*}*/
 
 @theme {
+    --font-sofia_semibold: SofiaSemiBold;
+    --font-sofia_bold: SofiaBold;
+    --font-spline_regular: SplineRegular;
+    --font-babySparle: babySparkle;
+    --font-acollia: acollia;
     --animate-shine: shine 5s linear infinite;
     @keyframes shine {
         0% { background-position: 100% }
@@ -40,10 +82,3 @@ body {
         transform: translateX(-100%);
     }
 }
-
-/*@layer base {*/
-/*    @font-face {*/
-/*        font-family: 'Khepri';*/
-/*        src: url('/public/Khepri-Textured.woff2');*/
-/*    }*/
-/*}*/
